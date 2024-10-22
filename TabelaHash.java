@@ -11,9 +11,9 @@ public class TabelaHash {
     }
 
     // Inserir um registro na tabela hash
-    public void inserir(int codigo, int hashCode) {
+    public void inserir(Registro registro, int hashCode) {
         int posicao = hashCode % tamanho;
-        tabela[posicao].inserir(codigo);
+        tabela[posicao].inserir(registro);
     }
 
     // Buscar um registro na tabela hash

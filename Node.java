@@ -1,9 +1,9 @@
 class Node {
-    int codigo;
+    Registro registro;
     Node next;
 
-    public Node(int codigo) {
-        this.codigo = codigo;
+    public Node(Registro registro) {
+        this.registro = registro;
         this.next = null;
     }
 }

@@ -6,8 +6,8 @@ class ListaEncadeada {
     }
 
     // Inserir no final da lista
-    public void inserir(int codigo) {
-        Node novoNode = new Node(codigo);
+    public void inserir(Registro registro) {
+        Node novoNode = new Node(registro);
         if (head == null) {
             head = novoNode;
         } else {
@@ -23,7 +23,7 @@ class ListaEncadeada {
     public boolean buscar(int codigo) {
         Node atual = head;
         while (atual != null) {
-            if (atual.codigo == codigo) {
+            if (atual.registro.getCodigo() == codigo) {
                 return true;
             }
             atual = atual.next;

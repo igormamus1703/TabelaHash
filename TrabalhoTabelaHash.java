@@ -9,7 +9,7 @@ public class TrabalhoTabelaHash {
         TrabalhoTabelaHash trabalho = new TrabalhoTabelaHash();
         
         // Geração de dados com seed fixa para reprodutibilidade
-        int[] conjuntosDeDados = trabalho.gerarDados(100000, 12345);
+        Registro[] conjuntoDeDados = trabalho.gerarDados(100000, 12345);
 
         // Testar com diferentes tamanhos de tabelas
         for (int tamanho : tamanhos) {
@@ -20,8 +20,8 @@ public class TrabalhoTabelaHash {
 
             // Testar inserção e medição de tempo e colisões
             long tempoInsercaoInicio = System.nanoTime();
-            for (int dado : conjuntosDeDados) {
-                tabelaHash.inserir(dado, trabalho.hashDivisao(dado, tamanho));
+            for (Registro registro : conjuntoDeDados) {
+                tabelaHash.inserir(registro, trabalho.hashDivisao(registro.getCodigo(), tamanho));
             }
             long tempoInsercaoFim = System.nanoTime();
             System.out.println("Tempo de inserção: " + (tempoInsercaoFim - tempoInsercaoInicio) + " ns");
@@ -32,7 +32,7 @@ public class TrabalhoTabelaHash {
             // Testar busca e medição de tempo
             long tempoBuscaInicio = System.nanoTime();
             for (int i = 0; i < 5; i++) {
-                tabelaHash.buscar(conjuntosDeDados[i], trabalho.hashDivisao(conjuntosDeDados[i], tamanho));
+                tabelaHash.buscar(conjuntoDeDados[i].getCodigo(), trabalho.hashDivisao(conjuntoDeDados[i].getCodigo(), tamanho));
             }
             long tempoBuscaFim = System.nanoTime();
             System.out.println("Tempo de busca: " + (tempoBuscaFim - tempoBuscaInicio) + " ns");
@@ -64,11 +64,12 @@ public class TrabalhoTabelaHash {
     }
 
     // Geração de dados com seed fixa
-    public int[] gerarDados(int tamanho, long seed) {
+    public Registro[] gerarDados(int tamanho, long seed) {
         Random random = new Random(seed);
-        int[] dados = new int[tamanho];
+        Registro[] dados = new Registro[tamanho];
         for (int i = 0; i < tamanho; i++) {
-            dados[i] = 100000000 + random.nextInt(900000000);  // Gera números de 9 dígitos
+            int codigo = 100000000 + random.nextInt(900000000);  // Gera números de 9 dígitos
+            dados[i] = new Registro(codigo);
         }
         return dados;
     }
