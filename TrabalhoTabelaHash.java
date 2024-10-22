@@ -21,7 +21,7 @@ public class TrabalhoTabelaHash {
             // Testar inserção e medição de tempo e colisões
             long tempoInsercaoInicio = System.nanoTime();
             for (int dado : conjuntosDeDados) {
-                tabelaHash.inserir(new Registro(dado), trabalho.hashDivisao(dado, tamanho));
+                tabelaHash.inserir(dado, trabalho.hashDivisao(dado, tamanho));
             }
             long tempoInsercaoFim = System.nanoTime();
             System.out.println("Tempo de inserção: " + (tempoInsercaoFim - tempoInsercaoInicio) + " ns");
