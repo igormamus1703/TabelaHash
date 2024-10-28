@@ -2,14 +2,14 @@ import java.util.Random;
 
 public class TrabalhoTabelaHash {
     public static void main(String[] args) {
-        // Tamanhos dos vetores (multiplicados por 10)
-        int[] tamanhos = {10000, 100000, 1000000};
+        // Tamanhos dos vetores 
+        int[] tamanhos = {10, 100, 1000, 10000, 100000};
 
         // Funções hash
         TrabalhoTabelaHash trabalho = new TrabalhoTabelaHash();
         
-        // Geração de dados com seed fixa para reprodutibilidade
-        Registro[] conjuntoDeDados = trabalho.gerarDados(100000, 12345);
+        // Geração de dados com seed fixa para reprodutibilidade(mudar aqui para 1 milhão, 5 milhões e 20 milhões.)
+        Registro[] conjuntoDeDados = trabalho.gerarDados(1000000, 12345);
 
         // Testar com diferentes tamanhos de tabelas
         for (int tamanho : tamanhos) {
